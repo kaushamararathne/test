@@ -1,0 +1,108 @@
+pipeline {
+    agent any
+
+    environment {
+        REACT_DIR = '.client'                        // React app folder
+        NODE_DIR = '.server'                        // Node backend folder
+        REMOTE_USER = 'kaushamararathne'                 // SSH username
+        REMOTE_HOST = '3.108.63.143'   // Server IP or Domain
+        REMOTE_PATH = '/var/www/myapp'             // Deployment directory on server
+        SSH_CREDENTIALS_ID = 'b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAgEA2ievrJFwaLcx37GR9ksT7geHHSgQ3BQDHkpz4CTUVjAyfKuQYDuO
+3oMbbWePyoZ+neZyBqGyKa+SlHI3q1UIAGHs9worsCA76zBHZC2fv+lVdo+1HUn69JRfKN
+6ZqFTXR1ziGgC1maLYuJH9SE1wkHU1T7i2drHvgIVaL2oOhjqCGmTx/b1c2YA9zA1RB8iz
+UNEVPZGp5TgtNxs/GeoDSUnh5zP0lUNpef/maFuAZNdabzTfi8JPGL128GeG2zLzW8FnZv
+TLMxTWA0WsrN9lWSpfKhSu3KLeCkP3vfqC5GKOroPPS9+g4YHu7xxwRGxRRWcrb5RjcjM1
+D5QtJItxGrcUioUsTm7FPZaMNl1cdKSJFfguvF6LFyES69bvpFNViFMB8Ts+L5sbCp+Q9i
+HOjx0sMh8ZrJov8jUNzF3GS3seI3Ug7eli4LOfKEQGz297liWwj/IssTYrq9XUqGLzRGkU
+9VXiZRpNs8tLRD+4oLhJAYex3P36wAzByLE14BXpFTTzW2l0PsdJHsSE+QKDlqU+VjWQzS
+uxhaLBN1D9tzrdw/dWILl6fg+gpmXj1ZX5001Lb/8V23tHf+RQtc2PVf02kJlbrqLWwXzV
+fZXvLko2rrFygX1jJoG8CQi8SQ+0LhN9krINUiC7sNLSwI6MVGPuqa/m5kmJg8ZNcyL1WK
+kAAAdQtZl/KbWZfykAAAAHc3NoLXJzYQAAAgEA2ievrJFwaLcx37GR9ksT7geHHSgQ3BQD
+Hkpz4CTUVjAyfKuQYDuO3oMbbWePyoZ+neZyBqGyKa+SlHI3q1UIAGHs9worsCA76zBHZC
+2fv+lVdo+1HUn69JRfKN6ZqFTXR1ziGgC1maLYuJH9SE1wkHU1T7i2drHvgIVaL2oOhjqC
+GmTx/b1c2YA9zA1RB8izUNEVPZGp5TgtNxs/GeoDSUnh5zP0lUNpef/maFuAZNdabzTfi8
+JPGL128GeG2zLzW8FnZvTLMxTWA0WsrN9lWSpfKhSu3KLeCkP3vfqC5GKOroPPS9+g4YHu
+7xxwRGxRRWcrb5RjcjM1D5QtJItxGrcUioUsTm7FPZaMNl1cdKSJFfguvF6LFyES69bvpF
+NViFMB8Ts+L5sbCp+Q9iHOjx0sMh8ZrJov8jUNzF3GS3seI3Ug7eli4LOfKEQGz297liWw
+j/IssTYrq9XUqGLzRGkU9VXiZRpNs8tLRD+4oLhJAYex3P36wAzByLE14BXpFTTzW2l0Ps
+dJHsSE+QKDlqU+VjWQzSuxhaLBN1D9tzrdw/dWILl6fg+gpmXj1ZX5001Lb/8V23tHf+RQ
+tc2PVf02kJlbrqLWwXzVfZXvLko2rrFygX1jJoG8CQi8SQ+0LhN9krINUiC7sNLSwI6MVG
+Puqa/m5kmJg8ZNcyL1WKkAAAADAQABAAACAAVydQLBPHfo44rbLEDksyBOObO4SBvuqYtF
+PvmO86NyLaM1Yh6nrgyBR+JRDn93PXcc2vuuaDxhOdmRJocHX+RiG8s3ir1ieKj7a+azLL
+aUSlArRTUpSh7MRIEeIOLZuT4lpBNpIzwe/vv7e2zQPjE6iVESOCOrk5u+anDk+KWJeQLx
+Xxd4kj2MR3egI/Cmpk+P5HthPhyyl3JuTR8bP1k0ETr+X9XCDjRxlCO4X2SeFmVfAf21M7
+tlIemIO1ZJ7QGLkFTl1b99fmssYusZ4uCrP3SAQO4nvc4gXnG7+0rPk9k+Ak4A9709SwkQ
+LMaQmEKt/BLUjGmR2TLvcEjl7ODXWxRlsVX0l72meHnMpxdXBWi1wEQdJ0CCwrD/Vh2xQV
+X+loDerMggcajf7rda5l5L/AjCFlSK2BZ95NceVYrBN6m1TpsraWgTT+XdlLKvrfASXFqn
+agvj1fROgQwWOZg0jcENiG/YJeGl6oFTNhq+OfeErm8gX9EfN4bL7mlDWwJ4jrDhpe0wi7
+O6Fk3Q0jKwpwpljCuSrNbn47rZ/G1oCmd3agWOsjhkzbyu20xs+a/juyjGjkJbePJR+629
+Cg2GWjoQ73LXXettk65myTkuK3cuIvJyTCQ9Hc/GuVKSrCBgXQVEVC0bQcwfzyMjZR6sjG
+BT/hc1rGuCYfyb2EJ5AAABACImUeL+VUNMPfg0qcmuDH/TjHMNPSt9fdeEAIbMo+ax/l8t
+w3SmP3be1Atziv3bhVY5PYVzVlusatDEBG4EHi3nBXXzX2taHy4VqIsztqhk1/8ne96oQI
+zUJDNO1RBWkGj4//vLZ9plggbY1kqn+rP/0kUDl/od2lYVDdccpW4KYimNh29QUcg2xxlT
+JHkiuNXfAZPXEE1LycFuJcfzcCIeTQ1Qw+UvrtfVcWB+jczT/TpWKB46RV/WTK85N1fsKh
+oj8ieF/uutnHPS2RisC0+Z7t10+14rcaMXL5X5U5ZHMnKerdwGHDsqxUpcuLWckjCKFDLF
+q3jS1VKbBQLmW+QAAAEBAPXjHXn7HOeYcSPqN37+hOTwEZL5UR7nOvlYThfH/W4KKWzWFF
+mABJyJW+sv6SRjLJ2xwbPacePqEGrTkQNp0+eFKCPyTVFBxJq7HW5cFGYjJRhGETWCdFof
+I0FgUDMPTcTIM8mIa8+wrg8ifAJtZWBjFYwm2qvqogihqyc5bh7X2pgupn0mvEwk3UyumJ
+dlmwIFPkjl6D6rhYD4JC6F3vfhfwRzCJXa8t3xbTiHnjfO53k/S8X+AHopPzk6SEpqrEos
+hp+F7nyGMXHTSSzKXG/4kR99LN1iEiKdK4jcS/F2Te0/8lAXiMa0MpD1LWe6mc63QYAscw
+MpEh5vCpDdAS0AAAEBAOMglhNpkVEGJ3kASbKE+oi3l20CKW8SWhbNNbeTZra478j4GsC3
+8zI6daiLeJhdzeselBGXhUXXHuInlBtFxxzhMPs/DHeItg3baz2zGhgeWE4kd7LUdtk0iM
+lLPPePc8N21vQKE8KltfSGI+7HmgajGaP11j4ZcYrMfrjgpXQighiMrxladXu5NyZcbYo8
+/dM5LDRnNJ0jgw41fqwRQv6xf2QTIphqeECNVGRjIj+v8bLxkAwnc9RRzEThBTNs2dHzBR
+wKk3ZR7uZJ2ZEEWsX8lMEbDgx93wcmGIHicgQROtXPlXs5x4c9GhMDgLrZ7Cy9dCPXvitY
+GQ2yHow9iu0AAAAaa2F1c2hhbWFyYXJhdGhuZUBnbWFpbC5jb20B
+'     // Your SSH credentials ID in Jenkins
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/kaushamararathne/test.git'
+            }
+        }
+
+        stage('Install React Dependencies & Build') {
+            steps {
+                dir("${REACT_DIR}") {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
+
+        stage('Install Node Dependencies') {
+            steps {
+                dir("${NODE_DIR}") {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Deploy to Remote Server') {
+            steps {
+                sshagent([SSH_CREDENTIALS_ID]) {
+                    sh """
+                    echo "Deploying React build to server..."
+                    scp -r ${REACT_DIR}/build ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/client
+                    echo "Deploying Node.js server to server..."
+                    scp -r ${NODE_DIR} ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/server
+                    echo "Restarting backend app via PM2..."
+                    ssh ${REMOTE_USER}@${REMOTE_HOST} "cd ${REMOTE_PATH}/server && npm install && pm2 restart all"
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '🎉 Deployment Successful!'
+        }
+        failure {
+            echo '❌ Deployment Failed. Check logs!'
+        }
+    }
+}
